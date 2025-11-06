@@ -119,6 +119,12 @@ export default function OrdersTable({
                     </span>
                     <br />
                     <span style={minorText}>{order.customer?.email}</span>
+                    {order.customer?.phone && (
+                      <>
+                        <br />
+                        <span style={minorText}>{order.customer?.phone}</span>
+                      </>
+                    )}
                   </td>
                   <td style={tdCell}>
                     {order.address?.fullName}

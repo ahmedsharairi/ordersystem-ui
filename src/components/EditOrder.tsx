@@ -121,6 +121,10 @@ export default function EditOrder({
       errors.email = "Please enter a valid email address";
     }
 
+    if (!editForm.phone || !editForm.phone.trim()) {
+      errors.phone = "Phone is required";
+    }
+
     // fullName (address name) is now optional - no validation needed
 
     if (!editForm.addressType || !editForm.addressType.trim()) {
@@ -255,13 +259,16 @@ export default function EditOrder({
             </div>
 
             <div style={inputBlock}>
-              <label style={labelStyle}>Phone</label>
+              <label style={labelStyle}>Phone *</label>
               <input
                 name="phone"
                 value={editForm.phone ?? ""}
                 onChange={handleEditChange}
-                style={inputStyle}
+                style={getInputStyle("phone")}
               />
+              {fieldErrors.phone && (
+                <div style={errorTextStyle}>{fieldErrors.phone}</div>
+              )}
             </div>
 
             <div style={inputBlock}>

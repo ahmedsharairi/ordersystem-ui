@@ -93,6 +93,10 @@ export default function CreateOrder({
       errors.email = "Please enter a valid email address";
     }
 
+    if (!newOrder.phone.trim()) {
+      errors.phone = "Phone is required";
+    }
+
     if (!newOrder.addressType.trim()) {
       errors.addressType = "Address Type is required";
     }
@@ -234,11 +238,14 @@ export default function CreateOrder({
             <div>
               <input
                 name="phone"
-                placeholder="Phone"
+                placeholder="Phone *"
                 value={newOrder.phone}
                 onChange={handleNewOrderField}
-                style={inputStyle}
+                style={getInputStyle("phone")}
               />
+              {fieldErrors.phone && (
+                <div style={errorTextStyle}>{fieldErrors.phone}</div>
+              )}
             </div>
 
             <div>
